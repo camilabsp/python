@@ -1,6 +1,13 @@
-' Escreva um programa que leia separadamente seu nome e o seu sobrenome e mostre na tela o nome completo.'
+''' Escreva um programa que mostre na tela as mensagens:
+ Alô, mundo!
+ALO MUNDO
+alô, mundo.
+ALo munDO
+Alô, Mundo!
 
-nome = str(input('Digite seu nome: '))
-sobrenome = str(input('Digite seu sobrenome: '))
-
-print(nome + ' ' + sobrenome)
+'''
+print('Alô, mundo!')
+print('ALO MUNDO')
+print('alô, mundo.')
+print('ALo munDO')
+print('Alô, Mundo!')
