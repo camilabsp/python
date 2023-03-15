@@ -16,12 +16,16 @@ class consultas:
         else:
             self.data = datetime.strptime(data,"%d/%m/%Y").date()
 
+            
+
     def agendar_consulta(self):
 
-        medico = int(input('''Médicos disponíveis:
+        medico = int(input('''\n***** Médicos Disponíveis *****
 1 - Antônio
 2 - José
 3 - Pedro
+*******************************\n
+
 Escolha seu médico:_'''))
 
         medicos = ['Antônio','José','Pedro']
@@ -35,7 +39,12 @@ Escolha seu médico:_'''))
         if medico == 3:
             self.medico = medicos[2]
 
-        print(f'\n**** CONSULTA AGENDADA ****\nData: {self.data} \nCliente: {self.cliente}\nCPF:{self.cpf}\nMédico: {self.medico}\n')
+
+        formato_data = self.data.strftime('%d/%m/%Y')
+
+
+        print(f'\n***** CONSULTA AGENDADA *****\nData: {formato_data} \nCliente: {self.cliente}\nCPF:{self.cpf}\nMédico: {self.medico}\n')
+
 
     def pagar_consulta(self):
 
@@ -61,7 +70,23 @@ Escolha seu médico:_'''))
 
     def agendar_retorno(self):
 
-        pass
+        data_retorno = input('Data de retorno desejada(dd/mm/aaaa): ')
+
+        data_retorno = datetime.strptime(data_retorno,"%d/%m/%Y").date()
+
+        formato_data = data_retorno.strftime('%d/%m/%Y')
+
+        data_consulta = self.data
+
+        qtd_dias = abs((data_retorno - data_consulta)).days
+
+        if qtd_dias < 30:
+
+            print(f'\nRetorno agendado para o dia {formato_data}.')
+            
+
+        else:
+            print(f'Retorno apenas com 30 dias após consulta. Por favor, agende uma nova consulta.')
 
 
     def relatorio_medico(self):
@@ -75,17 +100,17 @@ Escolha seu médico:_'''))
         
 def main():
 
-    print('''============== MENU ================
+    print('''************************ MENU ************************
 1 - Agendar Consulta
 2 - Pagar Consulta
 3 - Cancelar Consulta
 4 - Agendar Retorno
 5 - Relatório de Consultas realizadas no mês por médico
 6 - Relatório de Faturamento da Clínica por mês
-====================================
+*******************************************************
 ''')
 
-    consulta1 = consultas('15/03/2023','Camila',123,True)
+    consulta1 = consultas('16/03/2023','Camila',123,True)
     
     while True:
         try:
@@ -94,22 +119,32 @@ def main():
             if n == 1:
 
                 consulta1.agendar_consulta()
+                
+                break
 
             elif n == 2:
 
                 consulta1.pagar_consulta()
 
+                break
+
             elif n == 3:
 
                 consulta1.cancelar_consulta()
+
+                break
 
             elif n == 4:
 
                 consulta1.agendar_retorno()
 
+                break
+
             elif n == 5:
 
                 consulta1.relatorio_medico()
+
+                break
 
             elif n == 6:
 
