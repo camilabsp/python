@@ -1,30 +1,30 @@
 from datetime import *
 class consultas:
-    def __init__(self,data,cliente,cpf,pagamento = False):
+    def __init__(self,data_consulta,cliente,cpf,pagamento = False):
 
-        self.data = data
+        self.data_consulta = data_consulta
         self.cliente = cliente
         self.cpf = cpf
         self.pagamento = pagamento
+        
 
         fds = [5,6]
 
-        d = datetime.strptime(data,"%d/%m/%Y").date()
+        d = datetime.strptime(data_consulta,"%d/%m/%Y").date()
         if d <= date.today() or d.weekday() in fds:
             raise ValueError('data de consulta menor que atual')
-            print('Valor:',data)
+            print('Valor:',data_consulta)
         else:
-            self.data = datetime.strptime(data,"%d/%m/%Y").date()
+            self.data_consulta = datetime.strptime(data_consulta,"%d/%m/%Y").date()
 
             
-
     def agendar_consulta(self):
 
         medico = int(input('''\n***** Médicos Disponíveis *****
 1 - Antônio
 2 - José
 3 - Pedro
-*******************************\n
+*******************************
 
 Escolha seu médico:_'''))
 
@@ -40,10 +40,10 @@ Escolha seu médico:_'''))
             self.medico = medicos[2]
 
 
-        formato_data = self.data.strftime('%d/%m/%Y')
+        self.data_consulta = self.data_consulta.strftime('%d/%m/%Y')
 
 
-        print(f'\n***** CONSULTA AGENDADA *****\nData: {formato_data} \nCliente: {self.cliente}\nCPF:{self.cpf}\nMédico: {self.medico}\n')
+        print(f'\n***** CONSULTA AGENDADA *****\nData da consulta: {self.data_consulta} \nCliente: {self.cliente}\nCPF:{self.cpf}\nMédico: {self.medico}\n')
 
 
     def pagar_consulta(self):
@@ -74,20 +74,22 @@ Escolha seu médico:_'''))
 
         data_retorno = datetime.strptime(data_retorno,"%d/%m/%Y").date()
 
-        formato_data = data_retorno.strftime('%d/%m/%Y')
+        data_consulta = self.data_consulta
 
-        data_consulta = self.data
-
-        qtd_dias = abs((data_retorno - data_consulta)).days
-
-        if qtd_dias < 30:
-
-            print(f'\nRetorno agendado para o dia {formato_data}.')
+        if data_retorno > data_consulta:
             
+            dia = abs((data_retorno - data_consulta).days)
+
+            if dia <= 30:
+
+                print(f'Retorno agendado para o dia {data_retorno.strftime("%d/%m/%Y")}.')
+
+            else:
+                print(f'O Retorno não pode ser agendado. Por favor, agende uma nova consulta.')
 
         else:
-            print(f'Retorno apenas com 30 dias após consulta. Por favor, agende uma nova consulta.')
-
+            print('Data Inválida.')
+            
 
     def relatorio_medico(self):
 
@@ -110,7 +112,7 @@ def main():
 *******************************************************
 ''')
 
-    consulta1 = consultas('16/03/2023','Camila',123,True)
+    consulta1 = consultas('21/03/2023','Camila',123,True)
     
     while True:
         try:
