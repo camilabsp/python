@@ -1,16 +1,16 @@
-'''4) Faça um programa que grave uma lista com 15 posições, calcule e mostre:
+'''10) Faça um programa que grave uma lista com 15 posições, calcule e mostre:
 a) O maior elemento da lista e em que posição esse elemento se encontra;
-b) O menor elemento da lista e em que posição esse elemento se encontra.'''
+b) O menor elemento da lista e em que posição esse elemento se encontra'''
 
 import random
-def posicao():
+def lista_posicao():
 
     L = []
     menor = 0
     maior = 0
 
     for i in range(15):
-        k = random.randint(-50,50)
+        k = random.randint(-100,100)
         L.append(k)
 
     for L[i] in L:
@@ -36,7 +36,7 @@ def posicao():
 
 def main():
 
-    posicao()
+    lista_posicao()
 
 
 if __name__=='__main__':
