@@ -17,6 +17,8 @@ class app():
         self.root.title('Otimizador de Investimentos')
         self.root.geometry('700x500')
         self.root.resizable(True,True) #responsividade
+        self.root.maxsize(width=750,height=500)
+        self.root.minsize(width=500, height=400)
     
     def frames(self):
         #frames
@@ -58,7 +60,7 @@ class app():
 
     def widgets_frame2(self):
         #cria tabela
-        self.tabela = ttk.Treeview(self.frame2,height=3,column=('col1','col2','col3','col4','col5','col6','col7','col8','col9'))
+        self.tabela = ttk.Treeview(self.frame2,height=3,column=('col1','col2','col3','col4','col5','col6','col7','col8'))
         #cabeçado das colunas
         self.tabela.heading('#0',text='Data')
         self.tabela.heading('#1',text='Código')
@@ -80,7 +82,7 @@ class app():
         self.tabela.column('#7',width=90)
         self.tabela.column('#8',width= 80)
         #posicao da tabela
-        self.tabela.place(relx = 0.01,rely = 0.1, relwidth=0.98, relheight=0.85)
+        self.tabela.place(relx = 0.01,rely = 0.01, relwidth=0.98, relheight=0.93)
 
         #scrol
         #self.scrol = customtkinter.CTkScrollbar(self.frame2,orientation='vertical')
