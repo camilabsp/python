@@ -1,22 +1,20 @@
 from tkinter import *
 import customtkinter 
 from tkinter import ttk #treeview(tabela de dados)
-from funcoes import funcoes
+
 
 customtkinter.set_appearance_mode('Light')
 customtkinter.set_default_color_theme('dark-blue')
 
 root = customtkinter.CTk()
 
-class app(funcoes):
+class app():
     def __init__(self):
         self.root = root
         self.tela()
         self.frames()
         self.widgets_frame1()
         self.widgets_frame2()
-        self.cria_bd()
-        self.atualiza_tabela()
         root.mainloop()
         
     def tela(self):
@@ -54,9 +52,9 @@ class app(funcoes):
         self.valor_unit_entry = customtkinter.CTkEntry(self.frame1, width=80)
         self.valor_unit_entry.place(relx = 0.48, rely = 0.4)
         #botão 
-        self.bt_add = customtkinter.CTkButton (self.frame1,text = 'Adicionar', width = 70,command=self.add_dados)
+        self.bt_add = customtkinter.CTkButton (self.frame1,text = 'Adicionar', width = 70)
         self.bt_add.place(relx = 0.8, rely = 0.2)
-        self.bt_limpar = customtkinter.CTkButton (self.frame1,text = 'Limpar', width = 70,command=self.limpar_tela)
+        self.bt_limpar = customtkinter.CTkButton (self.frame1,text = 'Limpar', width = 70)
         self.bt_limpar.place(relx = 0.8, rely = 0.6)
         #radiobutton
         self.radio_valor = IntVar()
